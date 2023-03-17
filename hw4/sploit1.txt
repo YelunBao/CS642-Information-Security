@@ -1,0 +1,3 @@
+Use this file to explain how your sploit1 works.
+
+We can use the `strcpy(out, arg);` in line 7, then overflow the ret addr to our buffer, where the shellcode is located.

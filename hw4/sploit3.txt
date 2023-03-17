@@ -1,0 +1,5 @@
+Use this file to explain how your sploit3 works.
+
+Basic integer overflow. In `count = (int)strtoul(argv[1], &in, 10);`, assgin a negative value to count to make sure it will pass
+the check later. And `16*count` should be negatively large enough to overflow. The value after overflow should be a little great than
+2569.

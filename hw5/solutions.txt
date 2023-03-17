@@ -1,0 +1,44 @@
+Use this file to explain how the calibration and the attack works.
+
+Part A:
+
+Firstly, for all of the 4096 chars in array, use `maccess()` to load it to cache. Then call `sched_yield()` to suspend. Finally, 
+call `measure_one_block_access_time` to get the hit cycles and accumulate it, computing the average.
+
+For miss cycles the steps are all the same, except the `maccess()`. We use `flush()` instead to flush all caches before access,
+making sure we can computing miss cycles.
+
+Part B:
+
+Using the hit cycles and miss cycles passed by calibration.c, write a forever loop to wait victim's execution. Use the simple 
+prime and offset pair to randomly access the indices, in order to prevent prefetch. For each index, we flush the corresponding
+cache and call `sched_yield()`, waiting for the victim to execute. When coming back again, if the cycle counter is less than a
+threshold, we can conclude that this data is accessed by victim and output it. Otherwise, we think this data is not accessed and
+continue to next index.
+
+
+Part C:
+
+Prime+Probe:
+
+    1. It would be harder. Prime&Probe needs attacker to fills all the ways in a set with our own data. Then let the victim run. 
+    Attacker reaccesses all the cache lines in the set and measures the time to detect which data is displaced. This requires two
+    steps: 1) detect which data is displaced; 2) based on the data's memory address, compute the victim's data address and reverse
+    the indices. Since we are able to access the csv file, Flush&Reload is easier.
+
+    2. As mentioned in step 2, we need to compute the victim's data addresses and to reverse the addresses to indices. The cache 
+    organisation will affect the placement of memory data and how to reverse the addresses to indices. In Flush&Reload, it is
+    not a big deal since we do not need to reverse the addresses. We only need to flush all of the cache, let victim run and 
+    detect which data is hit. Do not need to care the cache organisation.
+    
+Spectre and Meltdown:
+
+    1. Meltdown is closer to be a covert channel. Spectre can only be used to manipulate a process into revealing its own data. 
+    However, Meltdown can be used to read privileged memory in a process's address space which even the process itself would 
+    normally be unable to access.
+
+    2. Meltdown is stronger. Meltdown breaks the mechanism that keeps applications from accessing arbitrary system memory, which
+    means applications can access system memory. Spectre tricks other applications into accessing arbitrary locations in their memory.
+    Seems like Meltdown is more powerful since it can access arbitrary system memory.
+
+    3. Meltdown. It prevents Meltdown by preventing most protected locations from being mapped to user space.

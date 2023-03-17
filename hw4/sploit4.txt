@@ -1,0 +1,4 @@
+Use this file to explain how your sploit4 works.
+
+In this target 4 we free'd p and q. However, we re-allocated a longer buffer to p, which free'd the q twice, in fact. 
+We can inject our shellcode into the 1024 buffer, and overwrite the header for 'q' so it points to the shellcode.

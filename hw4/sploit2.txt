@@ -1,0 +1,5 @@
+Use this file to explain how your sploit2 works.
+
+This target is much safer but we can still make use of `for (i = 0; i <= len; i++)` in line 13. 
+We can only one more bytes to buffer, so we can use it to move the current sfp to a location in our buffer,
+where we stored a fake RET. This fake RET points to the position of shellcode in our shellcode.

@@ -1,0 +1,4 @@
+Use this file to explain how your sploit0 works.
+
+This question is very easy. We can make use of   `strcpy(buf, name);` in line to overflow the ret addr of check_fail function, 
+forcing it to instruction `grade = 'A';`.

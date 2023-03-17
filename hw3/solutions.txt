@@ -1,0 +1,70 @@
+# Your UW ID and your name - there is no special format for this. (This homework ought to be done individually)
+ID:ybao35   Name: Yelun Bao
+
+# Trace 1: HTTP
+## Give three websites (domain Nname and IP addresses) visited from source IP address `192.168.0.100`
+www.amazon.com  205.251.242.54
+z-ecx.images-amazon.com  23.3.96.123
+ad.doubleclick.net  74.125.225.91
+
+## Give three search queries and the domain of the site for each query made from source IP address `192.168.0.100`
+www.bing.com  chicago metro
+www.bing.com  madison map
+www.amazon.com  adventures in Stochastic Processes
+
+
+# Trace 2: FTP
+## What is the user name and password used to connect to the FTP server?
+User: shiningmoon	Pssword: public
+
+## List any (and all) files that were downloaded.
+dragon.zip
+ARP.java
+L2Switch.java
+phase1.html
+
+## List the full path for two files (in different directories) on the FTP server that were NOT downloaded.
+/TelNet/javadoc.zip
+/phase1/StoreForwardingDatalink.java
+
+
+# Trace 3: Traceroute
+## Briefly describe how the traceroute tool works including which network protocols are in use.
+Traceroute sends a packet, including in the packet a TTL. When the first router that receives it, it will be exceeded, returning a Time Exceeded message. Add the time limit value by one, it resends the packet so that it will reach the second router in the path to the destination, which returns another Time Exceeded message, and so forth.
+ICMP and UDP are in use.
+
+## Give the source IP address that issued the traceroute command and the destination IP address.
+src: 192.168.0.100
+dst: 74.125.225.46
+
+## List the IP addresses on the route between source and destination.
+192.168.0.1
+10.131.180.1
+96.34.20.20
+96.34.17.95
+96.34.16.112
+96.34.16.77
+96.34.2.4
+96.34.0.7
+96.34.0.9
+96.34.3.9
+96.34.152.30
+209.85.254.120
+209.85.250.28
+
+# Trace 4: POP
+## What is the POP username and password?
+Username: cs155@dummymail.com
+Password: whitehat
+
+## How many emails are in the user's mailbox?
+5
+
+## Give the contents of from, to, subject, and date for one email message.
+From: joe <cs155@dummymail.com>
+To: cs155@dummymail.com
+Subject: foobar
+Date: Fri, 23 Apr 2010 08:20:52
+
+## What email client (application) and operating system is this person using to send and receive email?
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)

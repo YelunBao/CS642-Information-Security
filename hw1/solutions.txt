@@ -1,0 +1,47 @@
+# Part A:
+
+## Recovered password
+
+13145820
+
+
+## Pseudocode for attack
+
+n = 1
+while(not success):
+    i = '0'*n
+    while(not success)
+        try i as password
+        if success
+            print i
+            break
+        else if i == '9'*n
+            increment n by one
+            break
+        else
+            increment i by one
+end
+
+
+## Worst case running time
+
+Let n be the length of the password. The worst running time is O(10^(n+1)/9)
+
+
+## Discussion of current proposal and suggestions for improvement
+
+This proposal introduces a salt into the hash input. If I did not know the salt for the digest, the crack could be very difficult.
+
+The backward of this proposal is that its salt for each user is fixed after first storing. It is not resistent to CPA. One possible way to improve is that after getting the digest, concat it with one random value like session key, which is not fixed for each connection, then hash it again. Use the final one to send. The server stores the first digest, and also compute the second digest to compare. 
+
+
+# Part B:
+
+## Discussion of the current scheme
+
+The IV is transparent and attackers can make tricks on the IV the modify the plaintext.
+
+## Suggestions for improving the scheme
+
+Mask the IV by the key (XOR works), and do not write any sensitive information at the beginning of the message.
+
